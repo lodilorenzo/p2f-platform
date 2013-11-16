@@ -8,7 +8,7 @@ settings._target = None
 import django.core.handlers.wsgi
 import django.core.signals
 import django.db
-#import django.dispatch
+import django.dispatch
 import webapp2
 
 # Log errors.
