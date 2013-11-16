@@ -11,7 +11,7 @@ import django.db
 import django.dispatch
 import webapp2
 
-# commit prova
+# commit prova da pycharm su windows
 
 # Log errors.
 #import logging
