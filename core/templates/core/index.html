@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Last 5 Projects</title>
+</head>
+<body>
+{% if latest_prj_list %}
+<ul>
+    {% for prj in latest_prj_list %}
+    <li><a href="/core/project/{{ prj.id }}/">{{ prj.title }}</a></li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>No projects are available.</p>
+{% endif %}
+</body>
+</html>
