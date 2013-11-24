@@ -26,12 +26,13 @@ class Feature(models.Model):
 
 
 class Transaction(models.Model):
+
     TYPE = (
-        (0, 'Add Credit'),
-        (1, 'Support'),
+        ('add', 'Add Credit'),
+        ('support', 'Support'),
     )
 
-    type = models.TextField(choices=TYPE)
+    type = models.CharField(max_length=255, choices=TYPE, default='add')
     amount = models.IntegerField()
     creation_date = models.DateTimeField(auto_now_add=True)
     feature = models.ForeignKey(Feature, null=True, blank=True)
