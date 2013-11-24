@@ -2,11 +2,12 @@ from django.contrib import admin
 from django import forms
 from core.models import *
 
+
 # Register your models here.
 class ProjectAdmin(admin.ModelAdmin):
     model = Project
 
-# TODO Imparare a gestire i campi con valori multipli pilotati
+
 class TransactionForm(forms.ModelForm):
     type = forms.ChoiceField(choices=Transaction.TYPE)
 
