@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 
+
 class Project(models.Model):
     title = models.TextField()
     description = models.TextField(blank=True, null=True)
@@ -11,6 +12,19 @@ class Project(models.Model):
 
     def __unicode__(self):
         return self.title
+
+
+class Message(models.Model):
+    object = models.CharField(max_length=255)
+    description = models.TextField(blank=False, null=False)
+    creation_date = models.DateTimeField(auto_now_add=True)
+    project = models.ForeignKey(Project, null=False, blank=False)
+    user = models.ForeignKey(User, null=False, blank=False)
+
+    def __unicode__(self):
+        return "Obj: " + self.object + \
+               " -  From: " + self.user.username + \
+               " - In: " + self.project.title
 
 
 class Feature(models.Model):
@@ -26,10 +40,12 @@ class Feature(models.Model):
 
 
 class Transaction(models.Model):
+    ADD_VALUE = 'add'
+    SUPPORT_VALUE = 'support'
 
     TYPE = (
-        ('add', 'Add Credit'),
-        ('support', 'Support'),
+        (ADD_VALUE, 'Add Credit'),
+        (SUPPORT_VALUE, 'Support'),
     )
 
     type = models.CharField(max_length=255, choices=TYPE, default='add')
@@ -40,3 +56,11 @@ class Transaction(models.Model):
 
     def __unicode__(self):
         return self.user + "_" + self.type + "_" + self.amount
+
+
+class UserDetail(models.Model):
+    user = models.ForeignKey(User, unique=True)
+    credits = models.IntegerField()
+
+    def __unicode__(self):
+        return self.user.username + "_details"

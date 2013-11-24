@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django import forms
-from core.models import Project, Feature, Transaction
+from core.models import *
 
 # Register your models here.
 class ProjectAdmin(admin.ModelAdmin):
@@ -19,3 +19,5 @@ class TransactionAdmin(admin.ModelAdmin):
 admin.site.register(Project, ProjectAdmin)
 admin.site.register(Feature)
 admin.site.register(Transaction)
+admin.site.register(UserDetail)
+admin.site.register(Message)
